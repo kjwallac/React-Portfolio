@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
   },
   icon: {
-    color: "rgba(255, 255, 255, 0.54)",
+    color: "white",
   },
   tileBar: {
     height: 150,
-    opacity: 100,
+    background: "rgba(0, 0, 0, 0.7)",
   },
   work: {
     textAlign: "center",
@@ -41,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
   tile: {
     maxWidth: 375,
     maxHeight: 375,
-  }
+  },
+  // MuiGridListTileBar: {
+  //   background: "rgba(0, 0, 0, 0.7)",
+  // },
 }));
 
 
