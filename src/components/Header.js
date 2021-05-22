@@ -5,43 +5,38 @@ import {
   Button,
   IconButton,
   Drawer,
-  Link,
   MenuItem,
 } from "@material-ui/core";
-import FlareIcon from '@material-ui/icons/Flare';
-
-import React, { useState, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import FlareIcon from "@material-ui/icons/Flare";
+import React, { useState, useEffect, useRef } from "react";
 
 const headersData = [
   {
     label: "Home",
-    href: "#",
+    userFocus: "home",
   },
   {
     label: "About",
-    href: "#",
+    userFocus: "about",
   },
   {
     label: "Skills",
-    href: "#",
+    userFocus: "skills",
   },
 
   {
     label: "Works",
-    href: "#",
+    userFocus: "works",
   },
   {
     label: "Contact",
-    href: "#",
+    userFocus: "contact",
   },
 ];
 
 const useStyles = makeStyles(() => ({
   header: {
     backgroundColor: "#60557C",
-    // paddingRight: "79px",
-    // paddingLeft: "118px",
     flexGrow: 1,
     alignItems: "center",
 
@@ -60,9 +55,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
-export default function Header() {
+export default function Header({ setUserFocus, userFocus }) {
   const { header, menuButton, toolbar, drawerContainer } = useStyles();
+  const titleRef = useRef(null);
+  useEffect(() => {
+    if (userFocus === "home") {
+      titleRef.current.scrollIntoView(true);
+      const scrolledY = window.scrollY;
+
+      if (scrolledY) {
+        window.scroll(0, scrolledY - 72);
+      }
+    }
+  }, [userFocus]);
 
   const [state, setState] = useState({
     mobileView: false,
@@ -125,34 +130,31 @@ export default function Header() {
   };
 
   const getDrawerChoices = () => {
-    return headersData.map(({ label, href }) => {
+    return headersData.map(({ label, userFocus }) => {
       return (
-        <Link
-          {...{
-            component: RouterLink,
-            to: href,
-            color: "inherit",
-            style: { textDecoration: "none" },
-            key: label,
+        <MenuItem
+          key={label}
+          onClick={() => {
+            setUserFocus(userFocus);
+            setState((prevState) => ({ ...prevState, drawerOpen: false }));
           }}
         >
-          <MenuItem>{label}</MenuItem>
-        </Link>
+          {label}
+        </MenuItem>
       );
     });
   };
 
   const getMenuButtons = () => {
-    return headersData.map(({ label, href }) => {
+    return headersData.map(({ label, userFocus }) => {
       return (
         <Button
           {...{
-            key: label,
             color: "inherit",
-            to: href,
-            component: RouterLink,
             className: menuButton,
+            key: label,
           }}
+          onClick={() => setUserFocus(userFocus)}
         >
           {label}
         </Button>
@@ -161,7 +163,7 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header id={"home"} ref={titleRef}>
       <AppBar className={header}>
         {mobileView ? displayMobile() : displayDesktop()}
       </AppBar>

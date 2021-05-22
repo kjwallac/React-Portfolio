@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
@@ -26,11 +26,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Contact() {
+export default function Contact({ userFocus }) {
   const classes = useStyles();
+  const titleRef = useRef(null);
+  useEffect(() => {
+    if (userFocus === "contact") {
+      titleRef.current.scrollIntoView();
+    }
+  }, [userFocus]);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id={"contact"} ref={titleRef}>
       <Typography variant="h6" className={classes.work}>
         Get in Touch
       </Typography>

@@ -1,17 +1,22 @@
-import React from "react";
-
+import React, { useState } from "react";
+import Header from "../components/Header";
 import Projects from "../components/Projects";
-import Chips from "../components/Chips";
 import About from "../components/About";
 import Contact from "../components/Contact";
+import Copyright from "../components/Copyright";
+import Skills from "../components/Skills";
 
 export default function Home() {
+  const [userFocus, setUserFocus] = useState("");
+
   return (
     <>
-      <About />
-      <Chips />
-      <Projects />
-      <Contact />
+      <Header class="App-header" setUserFocus={setUserFocus} userFocus={userFocus}/>
+      <About userFocus={userFocus}/>
+      <Skills userFocus={userFocus}/>
+      <Projects userFocus={userFocus}/>
+      <Contact userFocus={userFocus}/>
+      <Copyright />
     </>
   );
 }

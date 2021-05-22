@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -42,23 +42,34 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 375,
     maxHeight: 375,
   },
-  // MuiGridListTileBar: {
-  //   background: "rgba(0, 0, 0, 0.7)",
-  // },
 }));
 
 
 
-export default function Projects() {
+export default function Projects({ userFocus }) {
   const classes = useStyles();
+  const titleRef = useRef(null);
+  useEffect(() => {
+    if (userFocus === "works") {
+      titleRef.current.scrollIntoView(true);
+      const scrolledY = window.scrollY;
+
+      if (scrolledY) {
+        window.scroll(0, scrolledY - 72);
+      }
+    }
+  }, [userFocus]);
+
 
   return (
     <Grid
+    ref={titleRef}
     container
     direction="row"
     justify="space-evenly"
     alignItems="center" 
-    className={classes.root}>
+    className={classes.root}
+    id="works">
       <GridList spacing={15} cellHeight={400} className={classes.gridList}>
         <GridListTile cols={2} style={{ height: "auto" }}>
           <Typography variant="h6" className={classes.work}>
