@@ -1,5 +1,11 @@
 const tileData = [
   {
+    img: '/images/lifedash.png',
+    title: 'Life Dash',
+    app: 'https://lifedash-memorial.herokuapp.com/',
+    repo: 'https://github.com/kjwallac/LifeDash',
+  },
+  {
     img: '/images/blog.png',
     title: 'Tech Blog',
     app: 'https://pure-dusk-57129.herokuapp.com/',
@@ -29,13 +35,6 @@ const tileData = [
     app: 'https://kjwallac.github.io/WeatherDashboard/',
     repo: 'https://github.com/kjwallac/WeatherDashboard',
   },
-  {
-    img: '/images/notetaker.png',
-    title: 'Note Taker',
-    app: 'https://secure-atoll-29612.herokuapp.com/',
-    repo: 'https://github.com/kjwallac/NoteTakerBackEnd',
-  },
-
 
 ];
 

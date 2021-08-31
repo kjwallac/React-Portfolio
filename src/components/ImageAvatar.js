@@ -25,7 +25,7 @@ export default function ImageAvatar() {
     <div className={classes.alignItemsAndJustifyContent}>
       <Avatar
         alt="Kristina Wallace"
-        src="/images/kristinapic.png"
+        src={`${window._PUBLIC_URL}/images/kristinapic.png`}
         className={classes.large}
       />
     </div>

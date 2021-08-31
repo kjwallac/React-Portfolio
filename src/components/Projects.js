@@ -50,7 +50,7 @@ export default function Projects({ userFocus }) {
   const classes = useStyles();
   const titleRef = useRef(null);
   useEffect(() => {
-    if (userFocus === "works") {
+    if (userFocus === "projects") {
       titleRef.current.scrollIntoView(true);
       const scrolledY = window.scrollY;
 
@@ -69,7 +69,7 @@ export default function Projects({ userFocus }) {
     justify="space-evenly"
     alignItems="center" 
     className={classes.root}
-    id="works">
+    id="projects">
       <GridList spacing={15} cellHeight={400} className={classes.gridList}>
         <GridListTile cols={2} style={{ height: "auto" }}>
           <Typography variant="h6" className={classes.work}>
@@ -78,7 +78,7 @@ export default function Projects({ userFocus }) {
         </GridListTile>
         {tileData.map((tile) => (
           <GridListTile className={classes.tile} key={tile.img} >
-            <img src={tile.img} alt={tile.title} />
+            <img src={`${window._PUBLIC_URL}${tile.img}`} alt={tile.title} />
             <GridListTileBar
               className={classes.tileBar}
               title={<h3>{tile.title}</h3>}

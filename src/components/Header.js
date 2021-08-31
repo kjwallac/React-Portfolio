@@ -25,8 +25,8 @@ const headersData = [
   },
 
   {
-    label: "Works",
-    userFocus: "works",
+    label: "Projects",
+    userFocus: "projects",
   },
   {
     label: "Contact",
