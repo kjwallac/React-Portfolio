@@ -40,6 +40,10 @@ export default function Contact({ userFocus }) {
       <Typography variant="h6" className={classes.work}>
         Get in Touch
       </Typography>
+      <br></br>
+      <Typography variant="body3" color="textSecondary" style={{ textAlign: "center"}}>
+      kristinajwallace@gmail.com
+    </Typography>
       <div>
         <FlareIcon className={classes.icon} />{" "}
         <Link
